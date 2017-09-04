@@ -24,11 +24,17 @@ export default class Request extends Component {
   // static propTypes = {
   //   id: PropTypes.object.isRequired,
   //   onConfirm: PropTypes.func.isRequired,
-  //   onReject: PropTypes.func.isRequired
+  //   onReject: PropTypes.func.isRequired,
+  //   payload: PropTypes.oneOfType([
+  //     PropTypes.shape({ decrypt: PropTypes.object.isRequired }),
+  //     PropTypes.shape({ sendTransaction: PropTypes.object.isRequired }),
+  //     PropTypes.shape({ sign: PropTypes.object.isRequired }),
+  //     PropTypes.shape({ signTransaction: PropTypes.object.isRequired })
+  //   ]).isRequired
   // };
 
   static isHandler (payload) {
-    return false;
+    return true;
   }
 
   render () {
