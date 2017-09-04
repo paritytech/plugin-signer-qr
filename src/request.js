@@ -14,18 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from 'react';
+import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 injectTapEventPlugin();
 
-export default class Request {
-  static propTypes = {
-    id: PropTypes.object.isRequired,
-    onConfirm: PropTypes.func.isRequired,
-    onReject: PropTypes.func.isRequired
-  };
+export default class Request extends Component {
+  // static propTypes = {
+  //   id: PropTypes.object.isRequired,
+  //   onConfirm: PropTypes.func.isRequired,
+  //   onReject: PropTypes.func.isRequired
+  // };
 
   static isHandler (payload) {
     return false;

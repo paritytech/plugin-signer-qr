@@ -16,7 +16,6 @@
 
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
 const webpack = require('webpack');
 
@@ -147,11 +146,6 @@ module.exports = {
       id: 'babel',
       threads: 4,
       loaders: ['babel-loader']
-    }),
-    new HtmlWebpackPlugin({
-      filename: '../index.html',
-      template: './index.ejs',
-      chunks: ['dist']
     }),
     new webpack.DefinePlugin({
       'process.env': {
