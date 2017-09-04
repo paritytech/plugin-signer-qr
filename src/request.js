@@ -16,30 +16,41 @@
 
 import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
+import styles from './request.css';
 
 injectTapEventPlugin();
 
 export default class Request extends Component {
-  // static propTypes = {
-  //   id: PropTypes.object.isRequired,
-  //   onConfirm: PropTypes.func.isRequired,
-  //   onReject: PropTypes.func.isRequired,
-  //   payload: PropTypes.oneOfType([
-  //     PropTypes.shape({ decrypt: PropTypes.object.isRequired }),
-  //     PropTypes.shape({ sendTransaction: PropTypes.object.isRequired }),
-  //     PropTypes.shape({ sign: PropTypes.object.isRequired }),
-  //     PropTypes.shape({ signTransaction: PropTypes.object.isRequired })
-  //   ]).isRequired
-  // };
+  static propTypes = {
+    className: PropTypes.string
+    // id: PropTypes.object.isRequired,
+    // isSending: PropTypes.bool.isRequired,
+    // netVersion: PropTypes.string.isRequired,
+    // onConfirm: PropTypes.func.isRequired,
+    // onReject: PropTypes.func.isRequired,
+    // payload: PropTypes.oneOfType([
+    //   PropTypes.shape({ decrypt: PropTypes.object.isRequired }),
+    //   PropTypes.shape({ sendTransaction: PropTypes.object.isRequired }),
+    //   PropTypes.shape({ sign: PropTypes.object.isRequired }),
+    //   PropTypes.shape({ signTransaction: PropTypes.object.isRequired })
+    // ]).isRequired
+  };
 
   static isHandler (payload) {
-    return true;
+    const isSendTx = !!(payload.sendTransaction || payload.signTransaction);
+
+    return isSendTx;
   }
 
   render () {
+    const { className } = this.props;
+
     return (
-      <div>Hello from a signer plugin</div>
+      <div className={ [styles.body, className].join('') }>
+        Hello from a signer plugin
+      </div>
     );
   }
 }

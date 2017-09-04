@@ -15,7 +15,6 @@
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HappyPack = require('happypack');
 const webpack = require('webpack');
 
@@ -71,45 +70,41 @@ module.exports = {
       {
         test: /\.css$/,
         include: /semantic-ui-css/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: isProd
-              }
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: isProd
             }
-          ]
-        })
+          }
+        ]
       },
       {
         test: /\.css$/,
         exclude: /semantic-ui-css/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1,
-                localIdentName: '[name]_[local]_[hash:base64:10]',
-                minimize: isProd,
-                modules: true
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: (loader) => [
-                  require('postcss-import'),
-                  require('postcss-nested'),
-                  require('postcss-simple-vars')
-                ]
-              }
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              localIdentName: '[name]_[local]_[hash:base64:10]',
+              minimize: isProd,
+              modules: true
             }
-          ]
-        })
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => [
+                require('postcss-import'),
+                require('postcss-nested'),
+                require('postcss-simple-vars')
+              ]
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpg|svg|woff|woff2|ttf|eot|otf)(\?.*)?$/,
@@ -139,9 +134,6 @@ module.exports = {
     fs: 'empty'
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: '../dist.css'
-    }),
     new HappyPack({
       id: 'babel',
       threads: 4,
