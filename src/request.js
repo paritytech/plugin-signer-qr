@@ -58,7 +58,7 @@ export default class Request extends Component {
     const transaction = payload.sendTransaction || payload.signTransaction;
 
     return (
-      <div>
+      <div className={ styles.body }>
         <div className={ styles.hello }>
           Hello from a signer plugin
         </div>
