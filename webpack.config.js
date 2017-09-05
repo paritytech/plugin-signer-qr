@@ -33,6 +33,9 @@ module.exports = {
     publicPath: 'dist/',
     filename: '../dist.js'
   },
+  externals: {
+    react: 'React'
+  },
   module: {
     rules: [
       {

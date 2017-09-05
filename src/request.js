@@ -15,14 +15,11 @@
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Component } from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import PropTypes from 'prop-types';
 
 import TransactionPending from '@parity/ui/Signer/TransactionPending';
 
 import styles from './request.css';
-
-injectTapEventPlugin();
 
 export default class Request extends Component {
   static contextTypes = {
