@@ -18,24 +18,35 @@ import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import PropTypes from 'prop-types';
 
+import TransactionPending from '@parity/ui/Signer/TransactionPending';
+
 import styles from './request.css';
 
 injectTapEventPlugin();
 
 export default class Request extends Component {
+  static contextTypes = {
+    api: PropTypes.object.isRequired
+  };
+
   static propTypes = {
-    className: PropTypes.string
-    // id: PropTypes.object.isRequired,
-    // isSending: PropTypes.bool.isRequired,
-    // netVersion: PropTypes.string.isRequired,
-    // onConfirm: PropTypes.func.isRequired,
-    // onReject: PropTypes.func.isRequired,
-    // payload: PropTypes.oneOfType([
-    //   PropTypes.shape({ decrypt: PropTypes.object.isRequired }),
-    //   PropTypes.shape({ sendTransaction: PropTypes.object.isRequired }),
-    //   PropTypes.shape({ sign: PropTypes.object.isRequired }),
-    //   PropTypes.shape({ signTransaction: PropTypes.object.isRequired })
-    // ]).isRequired
+    className: PropTypes.string,
+    date: PropTypes.instanceOf(Date).isRequired,
+    focus: PropTypes.bool,
+    gasLimit: PropTypes.object.isRequired,
+    id: PropTypes.object.isRequired,
+    isSending: PropTypes.bool.isRequired,
+    netVersion: PropTypes.string.isRequired,
+    onConfirm: PropTypes.func.isRequired,
+    onReject: PropTypes.func.isRequired,
+    origin: PropTypes.object.isRequired,
+    payload: PropTypes.oneOfType([
+      PropTypes.shape({ decrypt: PropTypes.object.isRequired }),
+      PropTypes.shape({ sendTransaction: PropTypes.object.isRequired }),
+      PropTypes.shape({ sign: PropTypes.object.isRequired }),
+      PropTypes.shape({ signTransaction: PropTypes.object.isRequired })
+    ]).isRequired,
+    signerStore: PropTypes.object.isRequired
   };
 
   static isHandler (payload) {
@@ -45,11 +56,28 @@ export default class Request extends Component {
   }
 
   render () {
-    const { className } = this.props;
+    const { className, date, focus, gasLimit, id, isSending, netVersion, onConfirm, onReject, payload, signerStore, origin } = this.props;
+    const transaction = payload.sendTransaction || payload.signTransaction;
 
     return (
-      <div className={ [styles.body, className].join('') }>
-        Hello from a signer plugin
+      <div>
+        <div className={ styles.hello }>
+          Hello from a signer plugin
+        </div>
+        <TransactionPending
+          className={ className }
+          date={ date }
+          focus={ focus }
+          gasLimit={ gasLimit }
+          id={ id }
+          isSending={ isSending }
+          netVersion={ netVersion }
+          onConfirm={ onConfirm }
+          onReject={ onReject }
+          origin={ origin }
+          signerStore={ signerStore }
+          transaction={ transaction }
+        />
       </div>
     );
   }
