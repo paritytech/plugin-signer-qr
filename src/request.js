@@ -46,10 +46,11 @@ export default class Request extends Component {
     signerStore: PropTypes.object.isRequired
   };
 
-  static isHandler (payload) {
-    const isSendTx = !!(payload.sendTransaction || payload.signTransaction);
+  static isHandler (payload, account) {
+    const isTransaction = !!(payload.sendTransaction || payload.signTransaction);
+    const isExternalAccount = !!(account && account.external);
 
-    return isSendTx;
+    return isTransaction && isExternalAccount;
   }
 
   render () {
