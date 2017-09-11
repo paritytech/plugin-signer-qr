@@ -16,13 +16,4 @@
 */
 
 .body {
-  border: 2px solid red;
-  box-sizing: border-box;
-
-  .hello {
-    background: red;
-    box-sizing: border-box;
-    color: white;
-    padding: 1em;
-  }
 }
