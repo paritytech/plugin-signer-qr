@@ -26,9 +26,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "6.24.1",
     "babel-plugin-transform-object-rest-spread": "6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "0.3.2",
-    "babel-preset-es2015": "6.22.0",
-    "babel-preset-es2016": "6.22.0",
-    "babel-preset-es2017": "6.22.0",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.1",
@@ -61,8 +59,8 @@
     "webpack": "^3.5.5"
   },
   "dependencies": {
-    "@parity/shared": "paritytech/js-shared",
-    "@parity/ui": "paritytech/js-ui"
+    "@parity/shared": "^2",
+    "@parity/ui": "^2"
   },
   "peerDependencies": {}
 }

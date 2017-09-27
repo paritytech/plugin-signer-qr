@@ -14,15 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
-import Request from './request';
-import isHandler from './query';
+export default function isHandler (payload, account) {
+  const isTransaction = !!(payload.sendTransaction || payload.signTransaction);
+  const isExternalAccount = !!(account && account.external);
 
-if (typeof window === 'undefined' || typeof window.parity === 'undefined' || typeof window.parity.extendShell !== 'function') {
-  throw new Error('Unable unable to register Parity Signer plugin, the window.parity.extendShell function is not exposed.');
+  return isTransaction && isExternalAccount;
 }
-
-window.parity.extendShell({
-  type: 'signer',
-  component: Request,
-  isHandler
-});

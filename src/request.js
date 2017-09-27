@@ -19,16 +19,16 @@ import PropTypes from 'prop-types';
 
 import TransactionPending from '@parity/ui/Signer/TransactionPending';
 
-export default function Request ({ className, date, focus, gasLimit, id, isSending, netVersion, onConfirm, onReject, payload, signerStore, origin }) {
+export default function Request ({ className, date, gasLimit, id, isFocussed, isSending, netVersion, onConfirm, onReject, payload, signerStore, origin }) {
   const transaction = payload.sendTransaction || payload.signTransaction;
 
   return (
     <TransactionPending
       className={ className }
       date={ date }
-      focus={ focus }
       gasLimit={ gasLimit }
       id={ id }
+      isFocussed={ isFocussed }
       isSending={ isSending }
       netVersion={ netVersion }
       onConfirm={ onConfirm }
@@ -43,9 +43,9 @@ export default function Request ({ className, date, focus, gasLimit, id, isSendi
 Request.propTypes = {
   className: PropTypes.string,
   date: PropTypes.instanceOf(Date).isRequired,
-  focus: PropTypes.bool,
   gasLimit: PropTypes.object.isRequired,
   id: PropTypes.object.isRequired,
+  isFocussed: PropTypes.bool,
   isSending: PropTypes.bool.isRequired,
   netVersion: PropTypes.string.isRequired,
   onConfirm: PropTypes.func.isRequired,
@@ -58,11 +58,4 @@ Request.propTypes = {
     PropTypes.shape({ signTransaction: PropTypes.object.isRequired })
   ]).isRequired,
   signerStore: PropTypes.object.isRequired
-};
-
-Request.isHandler = function (payload, account) {
-  const isTransaction = !!(payload.sendTransaction || payload.signTransaction);
-  const isExternalAccount = !!(account && account.external);
-
-  return isTransaction && isExternalAccount;
 };
