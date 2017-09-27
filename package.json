@@ -1,5 +1,5 @@
 {
-  "name": "@parity/plugin-sign-qr",
+  "name": "@parity/plugin-sign-qrsend",
   "description": "Parity signer plugin to allow QR codes",
   "version": "1.99.99",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paritytech/plugin-sign-qr.git"
+    "url": "git+https://github.com/paritytech/plugin-sign-qrsend.git"
   },
   "keywords": [],
   "devDependencies": {
