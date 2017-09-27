@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
-import Request from './request';
+import Request from './Request';
 import isHandler from './query';
 
 if (typeof window === 'undefined' || typeof window.parity === 'undefined' || typeof window.parity.extendShell !== 'function') {
