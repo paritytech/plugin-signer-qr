@@ -14,9 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
-export default function isHandler (payload, account) {
-  const isTransaction = !!(payload.sendTransaction || payload.signTransaction);
-  const isExternalAccount = !!(account && account.external);
+export default function isHandler (payload, accounts) {
+  const transaction = payload.sendTransaction || payload.signTransaction;
 
-  return isTransaction && isExternalAccount;
+  if (!transaction) {
+    return false;
+  }
+
+  const account = accounts[transaction.from];
+
+  return !!(account && account.external);
 }
