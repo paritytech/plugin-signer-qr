@@ -51,9 +51,7 @@ Request.propTypes = {
   onReject: PropTypes.func.isRequired,
   origin: PropTypes.object.isRequired,
   payload: PropTypes.oneOfType([
-    PropTypes.shape({ decrypt: PropTypes.object.isRequired }),
     PropTypes.shape({ sendTransaction: PropTypes.object.isRequired }),
-    PropTypes.shape({ sign: PropTypes.object.isRequired }),
     PropTypes.shape({ signTransaction: PropTypes.object.isRequired })
   ]).isRequired
 };
