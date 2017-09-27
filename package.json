@@ -59,7 +59,6 @@
     "webpack": "^3.5.5"
   },
   "dependencies": {
-    "@parity/shared": "^2",
     "@parity/ui": "^2"
   },
   "peerDependencies": {}
