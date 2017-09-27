@@ -17,13 +17,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TransactionPending from '@parity/ui/Signer/TransactionPending';
+import SendRequest from '@parity/ui/Signer/SendRequest';
 
 export default function Request ({ accounts, className, date, gasLimit, isFocussed, isSending, netVersion, onConfirm, onReject, payload, origin }) {
   const transaction = payload.sendTransaction || payload.signTransaction;
 
   return (
-    <TransactionPending
+    <SendRequest
       accounts={ accounts }
       className={ className }
       date={ date }
