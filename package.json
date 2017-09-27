@@ -2,7 +2,7 @@
   "name": "@parity/plugin-sign-qrsend",
   "description": "Parity signer plugin to allow QR codes",
   "version": "1.99.99",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "Parity Team <admin@parity.io>",
   "maintainers": [],
   "contributors": [],
