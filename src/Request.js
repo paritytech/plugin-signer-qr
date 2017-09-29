@@ -17,15 +17,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SendRequest from '@parity/ui/Signer/SendRequest';
+import ConfirmViaQr from '@parity/ui/Signer/ConfirmViaQr';
+import SignerRequest from '@parity/ui/Signer/Request';
 
 export default function Request ({ accounts, className, date, gasLimit, id, isFocussed, isSending, netVersion, onConfirm, onReject, payload, origin }) {
-  const transaction = payload.sendTransaction || payload.signTransaction;
-
   return (
-    <SendRequest
+    <SignerRequest
       accounts={ accounts }
       className={ className }
+      confirmElement={ ConfirmViaQr }
       date={ date }
       gasLimit={ gasLimit }
       id={ id }
@@ -35,7 +35,7 @@ export default function Request ({ accounts, className, date, gasLimit, id, isFo
       onConfirm={ onConfirm }
       onReject={ onReject }
       origin={ origin }
-      transaction={ transaction }
+      payload={ payload }
     />
   );
 }
@@ -53,7 +53,9 @@ Request.propTypes = {
   onReject: PropTypes.func.isRequired,
   origin: PropTypes.object.isRequired,
   payload: PropTypes.oneOfType([
+    PropTypes.shape({ decrypt: PropTypes.object.isRequired }),
     PropTypes.shape({ sendTransaction: PropTypes.object.isRequired }),
+    PropTypes.shape({ sign: PropTypes.object.isRequired }),
     PropTypes.shape({ signTransaction: PropTypes.object.isRequired })
   ]).isRequired
 };
