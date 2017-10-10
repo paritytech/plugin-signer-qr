@@ -9,10 +9,11 @@
   "license": "GPL-3.0",
   "scripts": {
     "build": "NODE_ENV=production webpack --colors --progress",
-    "watch": "webpack --colors --progress --watch",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint ./src/**/*.css",
-    "lint:js": "eslint --ignore-path .gitignore ./src/"
+    "lint:js": "eslint --ignore-path .gitignore ./src/",
+    "test": "echo \"WARN: npm run test skipped\"",
+    "watch": "webpack --colors --progress --watch"
   },
   "repository": {
     "type": "git",
