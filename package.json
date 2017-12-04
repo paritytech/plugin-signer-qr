@@ -1,7 +1,7 @@
 {
   "name": "@parity/plugin-signer-qr",
   "description": "Parity signer plugin to allow QR codes",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "main": "index.js",
   "author": "Parity Team <admin@parity.io>",
   "maintainers": [],
